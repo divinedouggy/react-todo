@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-function TodoListItem(props) {
+function TodoListItem({task}) {
     return (
-        <li>{props.task.title}</li>
+        <li>{task.title}</li>
     )
 }
 
