@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoListItem({task}) {
+function TodoListItem({ task }) {
     return (
         <li>{task.title}</li>
     )
