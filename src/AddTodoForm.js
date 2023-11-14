@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AddTodoForm({addTodo, todoTitle, setTodoTitle}) {
+function AddTodoForm({ addTodo, todoTitle, setTodoTitle }) {
 
     const handleTitleChange = (event) => {
         const newTodoTitle = event.target.value
