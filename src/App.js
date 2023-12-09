@@ -44,6 +44,36 @@ function App() {
     }
   }
 
+  const postTodo = async (todo) => {
+    const airtableData = {
+      fields: {
+        title: todo
+      }
+    }
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+      },
+      body: JSON.stringify(airtableData),
+    }
+
+    try {
+      const response = await fetch(url, options)
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`)
+      }
+
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error.message)
+      return null
+    }
+  }
+
   React.useEffect(() => {
     fetchData()
   }, [])
@@ -54,8 +84,9 @@ function App() {
     }
   }, [todoList])
 
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo])
+  const addTodo = async (newTodo) => {
+    await postTodo(newTodo)
+    fetchData()
   }
 
   const removeTodo = (id) => {
