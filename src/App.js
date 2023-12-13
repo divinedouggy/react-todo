@@ -80,6 +80,25 @@ function App() {
     }
   }
 
+  const deleteTodo = async (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${API_TOKEN}`
+      }
+    }
+
+    try {
+      const response = await fetch(`${url}${id}`, options)
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`)
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+
   React.useEffect(() => {
     fetchData()
   }, [])
@@ -95,6 +114,7 @@ function App() {
       (todo) => todo.id !== id
     )
     setTodoList(newTodoList)
+    deleteTodo(id)
   }
 
   return (
