@@ -45,6 +45,10 @@ function App() {
     }
   }
 
+  React.useEffect(() => {
+    fetchData()
+  }, [])
+
   const addTodo = async (todo) => {
     const airtableData = {
       fields: {
@@ -98,17 +102,6 @@ function App() {
     }
   }
 
-
-  React.useEffect(() => {
-    fetchData()
-  }, [])
-
-  React.useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList))
-    }
-  }, [todoList])
-
   const removeTodo = (id) => {
     const newTodoList = todoList.filter(
       (todo) => todo.id !== id
@@ -134,4 +127,3 @@ function App() {
 }
 
 export default App;
-
