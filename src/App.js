@@ -14,6 +14,7 @@ function App() {
   const TABLE_NAME = process.env.REACT_APP_TABLE_NAME
 
   const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}/`
+  const sortParams = "?sort[0][field]=completed&sort[0][direction]=asc&sort[1][field]=created&sort[1][direction]=asc"
 
   const fetchData = async () => {
     const options = {
@@ -24,7 +25,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(url, options)
+      const response = await fetch(`${url}${sortParams}`, options)
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`)
       }
