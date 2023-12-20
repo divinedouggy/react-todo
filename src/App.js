@@ -8,16 +8,18 @@ function App() {
   const [todoTitle, setTodoTitle] = useState("")
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  
+  const API_TOKEN = process.env.REACT_APP_AIRTABLE_API_TOKEN
+  const BASE_ID = process.env.REACT_APP_AIRTABLE_BASE_ID
+  const TABLE_NAME = process.env.REACT_APP_TABLE_NAME
 
-  const savedTodoList = JSON.parse(localStorage.getItem("savedTodoList"))
-
-  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/`
+  const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}/`
 
   const fetchData = async () => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`
+        Authorization: `Bearer ${API_TOKEN}`
       }
     }
 
@@ -26,7 +28,6 @@ function App() {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`)
       }
-
       const data = await response.json()
       const todos = data.records.map((todo) => {
         const newTodo = {
@@ -44,7 +45,11 @@ function App() {
     }
   }
 
-  const postTodo = async (todo) => {
+  React.useEffect(() => {
+    fetchData()
+  }, [])
+
+  const addTodo = async (todo) => {
     const airtableData = {
       fields: {
         title: todo
@@ -55,7 +60,7 @@ function App() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+        Authorization: `Bearer ${API_TOKEN}`,
       },
       body: JSON.stringify(airtableData),
     }
@@ -67,26 +72,34 @@ function App() {
       }
 
       const data = await response.json()
-      return data
+      const newTodo = {
+        title: data.fields.title,
+        id: data.id
+      }
+      setTodoList([...todoList, newTodo])
+
     } catch (error) {
       console.log(error.message)
       return null
     }
   }
 
-  React.useEffect(() => {
-    fetchData()
-  }, [])
-
-  React.useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList))
+  const deleteTodo = async (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${API_TOKEN}`
+      }
     }
-  }, [todoList])
 
-  const addTodo = async (newTodo) => {
-    await postTodo(newTodo)
-    fetchData()
+    try {
+      const response = await fetch(`${url}${id}`, options)
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`)
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   const removeTodo = (id) => {
@@ -94,6 +107,7 @@ function App() {
       (todo) => todo.id !== id
     )
     setTodoList(newTodoList)
+    deleteTodo(id)
   }
 
   return (
@@ -113,4 +127,3 @@ function App() {
 }
 
 export default App;
-
