@@ -2,6 +2,8 @@ import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import { useState } from 'react';
+import style from './css_modules/App.module.css'
+
 
 function App() {
   
@@ -33,7 +35,8 @@ function App() {
       const todos = data.records.map((todo) => {
         const newTodo = {
           title: todo.fields.title,
-          id: todo.id
+          id: todo.id,
+          completed: todo.completed
         }
         return newTodo
       })
@@ -112,8 +115,8 @@ function App() {
   }
 
   return (
-    <>
-      <h1>Todo List</h1>
+    <div className={style.App}>
+      <h1>My Todo List</h1>
 
       <AddTodoForm
         addTodo={addTodo}
@@ -123,7 +126,7 @@ function App() {
 
       {isLoading ? <p>Loading...</p> :
         <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
-    </>
+    </div>
   );
 }
 
