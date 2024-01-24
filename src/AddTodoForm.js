@@ -20,7 +20,7 @@ function AddTodoForm({ addTodo, todoTitle, setTodoTitle }) {
                 handleTitleChange={handleTitleChange}
                 todoTitle={todoTitle}
             >
-                Title
+                Title:
             </InputWithLabel>
         </form>
     )
