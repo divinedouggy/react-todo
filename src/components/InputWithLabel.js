@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import style from './css_modules/InputWithLabel.module.css'
+import style from '../css_modules/InputWithLabel.module.css'
 
 function InputWithLabel({ todoTitle, handleTitleChange, children }) {
 

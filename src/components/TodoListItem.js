@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRef } from 'react';
-import style from './css_modules/TodoListItem.module.css'
-import UnCheckedBox from './box_wo_check.png'
-import CheckedBox from './box_w_check.png'
+import style from '../css_modules/TodoListItem.module.css'
+import UnCheckedBox from '../box_wo_check.png'
+import CheckedBox from '../box_w_check.png'
 
 function TodoListItem({ task, onRemoveTodo, toggleCompleted }) {
 

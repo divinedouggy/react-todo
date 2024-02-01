@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
-import style from './css_modules/TodoList.module.css'
+import style from '../css_modules/TodoList.module.css'
 
 function TodoList({ todoList, onRemoveTodo, onToggleCompleted }) {
   return (
