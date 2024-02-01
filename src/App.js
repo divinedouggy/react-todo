@@ -56,7 +56,8 @@ function App() {
   const addTodo = async (todo) => {
     const airtableData = {
       fields: {
-        title: todo
+        title: todo,
+        completed: false
       }
     }
 
@@ -79,7 +80,7 @@ function App() {
       const newTodo = {
         title: data.fields.title,
         id: data.id,
-        completed: data.fields.completed = undefined ? false : true
+        completed: data.fields.completed
       }
 
       setTodoList([...todoList, newTodo])
