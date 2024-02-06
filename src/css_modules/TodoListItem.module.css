@@ -23,6 +23,10 @@
     }
 }
 
+.Complete :nth-child(1) {
+    text-decoration: line-through;
+}
+
 .CheckBox{
     margin-right:13px;
     stroke: slateblue;

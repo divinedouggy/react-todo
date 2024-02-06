@@ -1,6 +1,6 @@
 import React from 'react';
-import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
+import TodoList from './components/TodoList'
+import AddTodoForm from './components/AddTodoForm';
 import { useState } from 'react';
 import style from './css_modules/App.module.css'
 
@@ -36,7 +36,7 @@ function App() {
         const newTodo = {
           title: todo.fields.title,
           id: todo.id,
-          completed: todo.completed
+          completed: todo.fields.completed
         }
         return newTodo
       })
@@ -56,7 +56,8 @@ function App() {
   const addTodo = async (todo) => {
     const airtableData = {
       fields: {
-        title: todo
+        title: todo,
+        completed: false
       }
     }
 
@@ -78,10 +79,39 @@ function App() {
       const data = await response.json()
       const newTodo = {
         title: data.fields.title,
-        id: data.id
+        id: data.id,
+        completed: data.fields.completed
       }
+
       setTodoList([...todoList, newTodo])
 
+    } catch (error) {
+      console.log(error.message)
+      return null
+    }
+  }
+
+  const updateTodo = async (todo) => {
+    const airtableData = {
+      fields: {
+        completed: todo.completed
+      }
+    }
+
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_TOKEN}`,
+      },
+      body: JSON.stringify(airtableData),
+    }
+
+    try {
+      const response = await fetch(`${url}${todo.id}`, options)
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`)
+      }
     } catch (error) {
       console.log(error.message)
       return null
@@ -125,7 +155,11 @@ function App() {
       />
 
       {isLoading ? <p>Loading...</p> :
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
+        <TodoList
+          todoList={todoList}
+          onRemoveTodo={removeTodo}
+          onToggleCompleted={updateTodo}
+        />}
     </div>
   );
 }
