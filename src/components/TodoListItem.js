@@ -5,7 +5,7 @@ import UnCheckedBox from '../box_wo_check.png'
 import CheckedBox from '../box_w_check.png'
 import PropTypes from 'prop-types'
 
-function TodoListItem({ task, onRemoveTodo, toggleCompleted }) {
+function TodoListItem({ task, onRemoveTodo, toggleCompleted, setSumTodos }) {
 
     const checkMarkRef = useRef()
     const checkMarkHandler = () => {
@@ -14,12 +14,14 @@ function TodoListItem({ task, onRemoveTodo, toggleCompleted }) {
             checkMarkRef.current.childNodes[0].style.textDecoration ="line-through"
             task.completed = true
             toggleCompleted(task)
+            setSumTodos((previous) => previous - 1)
         }
         else if (checkMarkRef.current.children[0].children[0].src === CheckedBox) {
             checkMarkRef.current.children[0].children[0].src = UnCheckedBox
             checkMarkRef.current.childNodes[0].style.textDecoration ="none"
             task.completed = false
             toggleCompleted(task)
+            setSumTodos((previous) => previous + 1)
         }
     }
 

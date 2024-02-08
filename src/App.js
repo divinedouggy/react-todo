@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TodoList from './components/TodoList'
 import AddTodoForm from './components/AddTodoForm';
 import { useState } from 'react';
 import style from './css_modules/App.module.css'
 
+
+const getSumTodos = (todoList) => {
+  return todoList.reduce(
+    (result, value) => value.completed? result -= 1 : result, 
+    todoList.length
+  )
+}
 
 function App() {
   
@@ -19,6 +26,12 @@ function App() {
   // const sortParams = "?sort[0][field]=completed&sort[0][direction]=asc&sort[1][field]=created&sort[1][direction]=asc"
   // const sortParams = "?view=Grid%20view"
   // const sortParams = "?sort[0][field]=title&sort[0][direction]=asc"
+
+  const [sumTodos, setSumTodos] = useState(0)
+  
+  useEffect(() => {
+    setSumTodos(getSumTodos(todoList))
+  }, [todoList])
 
   const fetchData = async () => {
     const options = {
@@ -172,6 +185,8 @@ function App() {
           todoList={todoList}
           onRemoveTodo={removeTodo}
           onToggleCompleted={updateTodo}
+          sumTodos={sumTodos}
+          setSumTodos={setSumTodos}
         />}
     </div>
   );
