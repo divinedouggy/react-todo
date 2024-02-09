@@ -11,11 +11,16 @@
 
 .ListHead {
     height: 65px;
-    background: rgb(240, 248, 255);
-    background: linear-gradient(45deg, rgba(240, 248, 255, 0) 0%, rgba(240, 248, 255, 1) 80%, rgba(187, 189, 212, 0.272) 100%);
+
     width: inherit;
     list-style: none;
     border-top-right-radius: 20px;
+    border-right: 3px double rgba(0, 0, 0, 0.285);
+    border-left: 20px solid rgba(0, 0, 0, 0.285);
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 10px;
+    /* border-right: 3px double rgb(88, 88, 88); */
 }
 
 .ListFoot {
@@ -25,5 +30,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-right: 3px double rgba(0, 0, 0, 0.285);
+    border-left: 20px solid rgba(0, 0, 0, 0.285);
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 10px;
+    /* border-right: 3px double rgb(88, 88, 88); */
 
 }
