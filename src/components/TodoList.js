@@ -3,10 +3,10 @@ import TodoListItem from './TodoListItem';
 import style from '../css_modules/TodoList.module.css'
 import PropTypes from 'prop-types'
 
-function TodoList({ todoList, onRemoveTodo, onToggleCompleted, sumTodos, setSumTodos }) {
+function TodoList({ todoList, onRemoveTodo, onToggleCompleted, sumTodos, setSumTodos, tableName }) {
   return (
     <ul className={style.TodoList}>
-      <li className={style.ListHead}>Today</li>
+      <li className={style.ListHead}>{tableName}</li>
       {todoList.map((task) =>
         <TodoListItem
           key={task.id}
