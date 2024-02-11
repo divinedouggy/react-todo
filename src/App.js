@@ -11,7 +11,7 @@ const LandingPage = () => {
     <>
       <div className={style.Landing}>
 
-        <h1>My Todo List</h1>
+        <h1>Taskbook</h1>
         <h2>What's on the agenda?</h2>
 
         <div className={style.ColumnContainer}>
@@ -20,10 +20,10 @@ const LandingPage = () => {
             <p>Get on your grind:</p>
             <p>Reflect on your accomplishments:</p>
           </div>
-          
+
           <div className={style.Column2}>
             <Link to="/TodoList">
-              Your Todo List
+              Your Taskbook
             </Link>
             <Link to="/Completed">
               Your Completed Tasks
@@ -58,7 +58,7 @@ const TableChooser = () => {
 const Footer = () => {
   return(
     <div className={style.Footer}>
-      <p>© My Todo List</p>
+      <p>© Taskbook</p>
     </div>
   )
 }
@@ -80,6 +80,7 @@ function App() {
                 </Link>
               </button>
               <h1>Completed Tasks</h1>
+              <h2>Your proudest accomplishments go here</h2>
             </>
           }
         />

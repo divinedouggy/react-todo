@@ -164,33 +164,36 @@ function TodoContainer({ tableName }) {
       setTodoList(newTodoList)
       deleteTodo(id)
     }
-  
-    return (
-      <div className={style.App}>
-            <button>
-                <Link to="/" style={{ color: "black", textDecoration: "none" }}>
-                    Back
-                </Link>
-            </button>
-        <h1>My Todo List</h1>
-  
-        <AddTodoForm
-          addTodo={addTodo}
-          todoTitle={todoTitle}
-          setTodoTitle={setTodoTitle}
-        />
-  
-        {isLoading ? <p>Loading...</p> :
-          <TodoList
-            todoList={todoList}
-            onRemoveTodo={removeTodo}
-            onToggleCompleted={updateTodo}
-            sumTodos={sumTodos}
-            setSumTodos={setSumTodos}
-            tableName={tableName}
-          />}
-      </div>
-    );
-  }
+
+  return (
+    <div className={style.App}>
+      <button>
+        <Link
+          to="/"
+          style={{ color: "black", textDecoration: "none" }}
+        >
+          Back
+        </Link>
+      </button>
+      <h1>My Taskbook</h1>
+
+      <AddTodoForm
+        addTodo={addTodo}
+        todoTitle={todoTitle}
+        setTodoTitle={setTodoTitle}
+      />
+
+      {isLoading ? <p>Loading...</p> :
+        <TodoList
+          todoList={todoList}
+          onRemoveTodo={removeTodo}
+          onToggleCompleted={updateTodo}
+          sumTodos={sumTodos}
+          setSumTodos={setSumTodos}
+          tableName={tableName}
+        />}
+    </div>
+  );
+}
 
 export default TodoContainer
