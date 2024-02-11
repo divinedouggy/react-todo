@@ -9,19 +9,30 @@ const TABLE_NAME_2 = process.env.REACT_APP_TABLE_NAME_2
 const LandingPage = () => {
   return (
     <>
-      <div className={style.App}>
-        <h1>Welcome to My Todo List</h1>
-        <p>What's on the agenda?</p>
+      <div className={style.Landing}>
 
+        <h1>My Todo List</h1>
+        <h2>What's on the agenda?</h2>
 
-        <Link to="/TodoList">
-          Your Todo List
-        </Link>
-        <Link to="/Completed">
-          Your Completed Tasks
-        </Link>
+        <div className={style.ColumnContainer}>
+
+          <div className={style.Column1}>
+            <p>Get on your grind:</p>
+            <p>Reflect on your accomplishments:</p>
+          </div>
+          
+          <div className={style.Column2}>
+            <Link to="/TodoList">
+              Your Todo List
+            </Link>
+            <Link to="/Completed">
+              Your Completed Tasks
+            </Link>
+          </div>
+
+        </div>
+
       </div>
-      <p>© My Todo List</p>
     </>
   );
 }
@@ -40,6 +51,14 @@ const TableChooser = () => {
       </select>
       <TodoContainer tableName={tableName}/>
 
+    </div>
+  )
+}
+
+const Footer = () => {
+  return(
+    <div className={style.Footer}>
+      <p>© My Todo List</p>
     </div>
   )
 }
@@ -65,6 +84,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

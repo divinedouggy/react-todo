@@ -12,18 +12,73 @@ h1 {
     letter-spacing: 1.5px;
 }
 
-.App{
+.App {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 22px;
-    
+
     /* @media (max-width:560px) {
         align-items: center;
     } */
+
+    div {
+        display: flex;
+        align-items: center;
+    }
 }
 
-button{
+.Landing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+
+    h2{
+        font-weight: 100;
+        text-shadow: 0px 1px;
+    }
+    
+
+}
+
+.ColumnContainer {
+    display: flex;
+    p {
+        margin: 0;
+    }
+
+    a {
+        margin: 0;
+    }
+
+}
+
+.Column1{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: end;
+    margin-right: 5px;
+
+}
+
+.Column2{
+    display: flex;
+  
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.Footer {
+    position: absolute;
+    bottom:0;
+    right:0;
+    padding-right: 20px;
+}
+
+
+button {
     font-family: 'Instrument Serif', serif;
     letter-spacing: .6px;
     font-size: 15px;
