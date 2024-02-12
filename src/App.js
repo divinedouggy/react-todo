@@ -5,6 +5,11 @@ import style from './css_modules/App.module.css'
 
 const TABLE_NAME = process.env.REACT_APP_TABLE_NAME
 const TABLE_NAME_2 = process.env.REACT_APP_TABLE_NAME_2
+const TABLE_NAME_3 = process.env.REACT_APP_TABLE_NAME_3
+const TABLE_NAME_4 = process.env.REACT_APP_TABLE_NAME_4
+const TABLE_NAME_5 = process.env.REACT_APP_TABLE_NAME_5
+const TABLE_NAME_6 = process.env.REACT_APP_TABLE_NAME_6
+const TABLE_NAME_7 = process.env.REACT_APP_TABLE_NAME_7
 
 const LandingPage = () => {
   return (
@@ -39,20 +44,34 @@ const LandingPage = () => {
 
 const TableChooser = () => {
   const [tableName, setTableName] = useState(TABLE_NAME)
+  const buttonHandler = (event) => {
+
+    setTableName(event.target.value)
+  }
   return (
-    <div>
-      <select
-        id="selectField"
-        value={tableName}
-        onChange={(event) => setTableName(event.target.value)}
-      >
-        <option value={TABLE_NAME}>Monday</option>
-        <option value={TABLE_NAME_2}>Tuesday</option>
-      </select>
+    <div className={style.MasterContainer}>
+      <div className={style.WeekDays}>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME}>M</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_2}>Tu</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_3}>W</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_4}>Th</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_5}>F</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_6}>Sa</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_7}>Su</button>
+      </div>
       <TodoContainer tableName={tableName} />
     </div>
   )
 }
+
+{/* <select
+id="selectField"
+value={tableName}
+onChange={(event) => setTableName(event.target.value)}
+>
+<option value={TABLE_NAME}>Monday</option>
+<option value={TABLE_NAME_2}>Tuesday</option>
+</select> */}
 
 const Footer = () => {
   return (

@@ -167,15 +167,6 @@ function TodoContainer({ tableName }) {
 
   return (
     <div className={style.MasterContainer}>
-      <div className={style.WeekDays}>
-        <button>M</button>
-        <button>Tu</button>
-        <button>W</button>
-        <button>Th</button>
-        <button>F</button>
-        <button>Sa</button>
-        <button>Su</button>
-      </div>
       <div className={style.App}>
         <button>
           <Link

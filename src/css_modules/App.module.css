@@ -97,15 +97,16 @@ h2{
         text-shadow: 1px 1px;
         color: rgb(88, 88, 88);
         border: 3px solid rgb(79, 76, 76);
-        border-radius: 6px;
+        border-radius: 5px;
     }
 
     button:hover{
         background-color: aliceblue;
         border-color: slateblue;
+        border-width: 1px;
         color: slateblue;
         /* text-shadow: 1px 1px 1px slateblue; */
-        transition: all .3s;
+        transition: all .1s ease-in-out;
     }
 }
 
