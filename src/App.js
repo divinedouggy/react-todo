@@ -64,15 +64,6 @@ const TableChooser = () => {
   )
 }
 
-{/* <select
-id="selectField"
-value={tableName}
-onChange={(event) => setTableName(event.target.value)}
->
-<option value={TABLE_NAME}>Monday</option>
-<option value={TABLE_NAME_2}>Tuesday</option>
-</select> */}
-
 const Footer = () => {
   return (
     <div className={style.Footer}>

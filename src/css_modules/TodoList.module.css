@@ -7,6 +7,10 @@
     flex-direction: column;
     align-items: end;
     border-top-right-radius: 30px;
+
+    @media (max-width:320px) {
+        width: 55vw;
+    }
 }
 
 .ListHead {
@@ -24,6 +28,11 @@
     padding-right: 10px;
     font-size: 40px;
     /* border-right: 3px double rgb(88, 88, 88); */
+
+    @media (max-width:320px) {
+        font-size: 30px;
+        border-left-width: 16px;
+    }
 }
 
 .ListFoot {
@@ -40,4 +49,7 @@
     padding-right: 10px;
     /* border-right: 3px double rgb(88, 88, 88); */
 
+    @media (max-width:320px) {
+        border-left-width: 16px;
+    }
 }
