@@ -42,6 +42,7 @@ h2{
 
 .ColumnContainer {
     display: flex;
+    
     p {
         margin: 0;
     }
@@ -70,6 +71,42 @@ h2{
     bottom:0;
     right:0;
     padding-right: 20px;
+}
+
+
+.MasterContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.WeekDays{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 550px;
+    width: 75px;
+    /* border: 1px solid black; */
+
+    button{
+        width: 65px;
+        height: 65px;
+        background-color: transparent;
+        font-size: 29px;
+        text-shadow: 1px 1px;
+        color: rgb(88, 88, 88);
+        border: 3px solid rgb(79, 76, 76);
+        border-radius: 6px;
+    }
+
+    button:hover{
+        background-color: aliceblue;
+        border-color: slateblue;
+        color: slateblue;
+        /* text-shadow: 1px 1px 1px slateblue; */
+        transition: all .3s;
+    }
 }
 
 

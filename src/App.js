@@ -39,24 +39,23 @@ const LandingPage = () => {
 
 const TableChooser = () => {
   const [tableName, setTableName] = useState(TABLE_NAME)
-  return(
+  return (
     <div>
       <select
-      id="selectField"
-      value={tableName}
-      onChange={(event) => setTableName(event.target.value)}
+        id="selectField"
+        value={tableName}
+        onChange={(event) => setTableName(event.target.value)}
       >
         <option value={TABLE_NAME}>Monday</option>
         <option value={TABLE_NAME_2}>Tuesday</option>
       </select>
-      <TodoContainer tableName={tableName}/>
-
+      <TodoContainer tableName={tableName} />
     </div>
   )
 }
 
 const Footer = () => {
-  return(
+  return (
     <div className={style.Footer}>
       <p>© Taskbook</p>
     </div>
@@ -85,7 +84,7 @@ function App() {
           }
         />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   )
 }

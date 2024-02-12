@@ -166,32 +166,43 @@ function TodoContainer({ tableName }) {
     }
 
   return (
-    <div className={style.App}>
-      <button>
-        <Link
-          to="/"
-          style={{ color: "black", textDecoration: "none" }}
-        >
-          Back
-        </Link>
-      </button>
-      <h1>My Taskbook</h1>
+    <div className={style.MasterContainer}>
+      <div className={style.WeekDays}>
+        <button>M</button>
+        <button>Tu</button>
+        <button>W</button>
+        <button>Th</button>
+        <button>F</button>
+        <button>Sa</button>
+        <button>Su</button>
+      </div>
+      <div className={style.App}>
+        <button>
+          <Link
+            to="/"
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            Back
+          </Link>
+        </button>
+        <h1>My Taskbook</h1>
 
-      <AddTodoForm
-        addTodo={addTodo}
-        todoTitle={todoTitle}
-        setTodoTitle={setTodoTitle}
-      />
+        <AddTodoForm
+          addTodo={addTodo}
+          todoTitle={todoTitle}
+          setTodoTitle={setTodoTitle}
+        />
 
-      {isLoading ? <p>Loading...</p> :
-        <TodoList
-          todoList={todoList}
-          onRemoveTodo={removeTodo}
-          onToggleCompleted={updateTodo}
-          sumTodos={sumTodos}
-          setSumTodos={setSumTodos}
-          tableName={tableName}
-        />}
+        {isLoading ? <p>Loading...</p> :
+          <TodoList
+            todoList={todoList}
+            onRemoveTodo={removeTodo}
+            onToggleCompleted={updateTodo}
+            sumTodos={sumTodos}
+            setSumTodos={setSumTodos}
+            tableName={tableName}
+          />}
+      </div>
     </div>
   );
 }
