@@ -1,180 +1,100 @@
-import React from 'react';
-import TodoList from './components/TodoList'
-import AddTodoForm from './components/AddTodoForm';
+import TodoContainer from './components/TodoContainer';
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import style from './css_modules/App.module.css'
+
+const TABLE_NAME = process.env.REACT_APP_TABLE_NAME
+const TABLE_NAME_2 = process.env.REACT_APP_TABLE_NAME_2
+const TABLE_NAME_3 = process.env.REACT_APP_TABLE_NAME_3
+const TABLE_NAME_4 = process.env.REACT_APP_TABLE_NAME_4
+const TABLE_NAME_5 = process.env.REACT_APP_TABLE_NAME_5
+const TABLE_NAME_6 = process.env.REACT_APP_TABLE_NAME_6
+const TABLE_NAME_7 = process.env.REACT_APP_TABLE_NAME_7
+
+const LandingPage = () => {
+  return (
+    <>
+      <div className={style.Landing}>
+
+        <h1>Taskbook</h1>
+        <h2>What's on the agenda?</h2>
+
+        <div className={style.ColumnContainer}>
+
+          <div className={style.Column1}>
+            <p>Get on your grind:</p>
+            <p>Reflect on your accomplishments:</p>
+          </div>
+
+          <div className={style.Column2}>
+            <Link to="/TodoList">
+              Your Taskbook
+            </Link>
+            <Link to="/Completed">
+              Your Completed Tasks
+            </Link>
+          </div>
+
+        </div>
+
+      </div>
+    </>
+  );
+}
+
+const TableChooser = () => {
+  const [tableName, setTableName] = useState(TABLE_NAME)
+  const buttonHandler = (event) => setTableName(event.target.value)
+
+  return (
+    <div className={style.MasterContainer}>
+      <div className={style.WeekDays}>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME}>M</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_2}>Tu</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_3}>W</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_4}>Th</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_5}>F</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_6}>Sa</button>
+        <button onClick={(e) => buttonHandler(e)} value={TABLE_NAME_7}>Su</button>
+      </div>
+      <TodoContainer tableName={tableName} />
+    </div>
+  )
+}
+
+const Footer = () => {
+  return (
+    <div className={style.Footer}>
+      <p>© Taskbook</p>
+    </div>
+  )
+}
 
 
 function App() {
-  
-  const [todoTitle, setTodoTitle] = useState("")
-  const [todoList, setTodoList] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  
-  const API_TOKEN = process.env.REACT_APP_AIRTABLE_API_TOKEN
-  const BASE_ID = process.env.REACT_APP_AIRTABLE_BASE_ID
-  const TABLE_NAME = process.env.REACT_APP_TABLE_NAME
-
-  const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}/`
-  // const sortParams = "?sort[0][field]=completed&sort[0][direction]=asc&sort[1][field]=created&sort[1][direction]=asc"
-  // const sortParams = "?view=Grid%20view"
-  // const sortParams = "?sort[0][field]=title&sort[0][direction]=asc"
-
-  const fetchData = async () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${API_TOKEN}`
-      }
-    }
-
-    try {
-      const response = await fetch(`${url}`, options)
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`)
-      }
-      const data = await response.json()
-      
-      const todos = data.records.map((todo) => {
-        const newTodo = {
-          title: todo.fields.title,
-          id: todo.id,
-          completed: todo.fields.completed
-        }
-        return newTodo
-      })
-      
-      todos.sort((a, b) => {
-        if (a.title.toLowerCase() < b.title.toLowerCase()) return -1
-      })
-
-      // const reverseTodos = todos.sort((a,b) => {
-      //   if (a.title.toLowerCase() > b.title.toLowerCase()) return -1
-      // })
-
-      setTodoList(todos)
-      setIsLoading(false)
-
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  React.useEffect(() => {
-    fetchData()
-  }, [])
-
-  const addTodo = async (todo) => {
-    const airtableData = {
-      fields: {
-        title: todo,
-        completed: false
-      }
-    }
-
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_TOKEN}`,
-      },
-      body: JSON.stringify(airtableData),
-    }
-
-    try {
-      const response = await fetch(url, options)
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`)
-      }
-
-      const data = await response.json()
-      const newTodo = {
-        title: data.fields.title,
-        id: data.id,
-        completed: data.fields.completed
-      }
-
-      setTodoList([...todoList, newTodo].sort((a, b) => {
-        if (a.title.toLowerCase() < b.title.toLowerCase()) return -1
-      }))
-
-    } catch (error) {
-      console.log(error.message)
-      return null
-    }
-  }
-
-  const updateTodo = async (todo) => {
-    const airtableData = {
-      fields: {
-        completed: todo.completed
-      }
-    }
-
-    const options = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_TOKEN}`,
-      },
-      body: JSON.stringify(airtableData),
-    }
-
-    try {
-      const response = await fetch(`${url}${todo.id}`, options)
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`)
-      }
-    } catch (error) {
-      console.log(error.message)
-      return null
-    }
-  }
-
-  const deleteTodo = async (id) => {
-    const options = {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${API_TOKEN}`
-      }
-    }
-
-    try {
-      const response = await fetch(`${url}${id}`, options)
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`)
-      }
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  const removeTodo = (id) => {
-    const newTodoList = todoList.filter(
-      (todo) => todo.id !== id
-    )
-    setTodoList(newTodoList)
-    deleteTodo(id)
-  }
-
   return (
-    <div className={style.App}>
-      <h1>My Todo List</h1>
-
-      <AddTodoForm
-        addTodo={addTodo}
-        todoTitle={todoTitle}
-        setTodoTitle={setTodoTitle}
-      />
-
-      {isLoading ? <p>Loading...</p> :
-        <TodoList
-          todoList={todoList}
-          onRemoveTodo={removeTodo}
-          onToggleCompleted={updateTodo}
-        />}
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/TodoList' element={<TableChooser />} />
+        <Route
+          path="/Completed"
+          element={
+            <>
+              <button>
+                <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+                  Back
+                </Link>
+              </button>
+              <h1>Completed Tasks</h1>
+              <h2>Your proudest accomplishments go here</h2>
+            </>
+          }
+        />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  )
 }
 
 export default App;

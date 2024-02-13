@@ -1,5 +1,82 @@
+.TodoList {
+    width: 66vw;
+    background: rgb(240, 248, 255);
+    background: linear-gradient(90deg, rgba(240, 248, 255, 0) 0%, rgba(240, 248, 255, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-top-right-radius: 30px;
 
-.TodoList{
-    width: 43vw;
-    /* border: 1px solid black; */
+    @media (min-width:320px) and (max-width:479px) {
+        width: 55vw;
+    }
+
+    @media (min-width:480px) and (max-width:599px) {
+        width: 55vw;
+        margin-left: 20px;
+    }
+
+    @media (min-width:600px) and (max-width:800px) {
+        width: 60vw;
+        margin-left: 60px;
+    }
+
+    @media (min-width:801px) and (max-width:1024px) {
+        width: 65vw;
+        margin-left: 60px;
+    }
+
+    @media (min-width:1025px) and (max-width:1500px) {
+        margin-left: 65px;
+    }
+}
+
+.ListHead {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    list-style: none;
+    border-top-right-radius: 20px;
+    border-right: 3px double rgba(0, 0, 0, 0.285);
+    border-left: 20px solid rgba(0, 0, 0, 0.285);
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 40px;
+
+    @media (min-width:320px) and (max-width:479px) {
+        font-size: 30px;
+        border-left-width: 16px;
+    }
+
+    @media (min-width:480px) and (max-width:599px) {
+        font-size: 32px;
+    }
+
+    @media (min-width:600px) and (max-width:800px) {
+        font-size: 36px;
+    }
+
+    @media (min-width:801px) and (max-width:1024px) {
+        font-size: 37px;
+    }
+}
+
+.ListFoot {
+    height: 65px;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px double rgba(0, 0, 0, 0.285);
+    border-left: 20px solid rgba(0, 0, 0, 0.285);
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 10px;
+
+    @media (min-width:320px) and (max-width:479px) {
+        border-left-width: 16px;
+    }
 }

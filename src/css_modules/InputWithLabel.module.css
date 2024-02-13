@@ -1,19 +1,16 @@
-
-
-.InputWithLabel{
+.InputWithLabel {
     display: flex;
     align-items: center;
-
 }
 
-/* .Label{
-     border: 1px solid black; 
-} */
-
-.Input{
+.Input {
     background: transparent;
     border-left: 0;
     border-right: 0;
     border-top: 0;
     margin: 10px;
 }
+
+/* .Label{
+ 
+} */

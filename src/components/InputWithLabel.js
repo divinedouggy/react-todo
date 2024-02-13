@@ -8,7 +8,7 @@ function InputWithLabel({ todoTitle, handleTitleChange, children }) {
 
     useEffect(() => {
         inputRef.current.focus()
-    })
+    }, [])
 
     return (
         <div className={style.InputWithLabel}>

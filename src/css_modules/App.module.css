@@ -1,10 +1,8 @@
-
 body {
     background-color: lavender;
     color: rgb(88, 88, 88);
     font-family: 'Instrument Serif', serif;
     letter-spacing: .9px;
-    /* border: 1px solid black; */
 }
 
 h1 {
@@ -12,18 +10,227 @@ h1 {
     letter-spacing: 1.5px;
 }
 
-.App{
+h2 {
+    font-weight: 100;
+    text-shadow: 0px 1px;
+}
+
+.App {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 22px;
-    
-    /* @media (max-width:560px) {
+
+    div {
+        display: flex;
         align-items: center;
-    } */
+    }
+
+    @media ((min-width:320px) and (max-width:479px)) {
+        align-items: flex-end;
+        font-size: 18px;
+    }
 }
 
-button{
+.Landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+
+    @media ((min-width:320px) and (max-width:479px)) {
+        font-size: 18px;
+
+        p {
+            width: 40vw;
+        }
+
+        a {
+            width: 40vw;
+        }
+    }
+
+    @media ((min-width:480px) and (max-width:599px)) {
+        font-size: 20px;
+    }
+}
+
+.ColumnContainer {
+    display: flex;
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        margin: 0;
+    }
+}
+
+.Column1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 5px;
+}
+
+.Column2 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.Footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 20px;
+
+    @media ((min-width:320px) and (max-width:479px)) {
+        font-size: 10px;
+        left: 0;
+        padding-left: 5px;
+    }
+
+    @media ((min-width:480px) and (max-width:599px)) {
+        font-size: 12px;
+        padding-right: 8px;
+    }
+
+    @media ((min-width:600px) and (max-width:800px)) {
+        font-size: 12px;
+        padding-right: 4px;
+    }
+
+    @media ((min-width:801px) and (max-width:1024px)) {
+        font-size: 13px;
+        padding-right: 7px;
+    }
+
+    @media (min-width:1025px) and (max-width:1280px) {
+        font-size: 15px;
+        padding-right: 14px;
+    }
+}
+
+
+.MasterContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    @media ((min-width:320px) and (max-width:479px)) {
+        justify-content: flex-end;
+        padding-right: 13px;
+    }
+}
+
+.WeekDays {
+    display: flex;
+    position: absolute;
+    left: 122px;
+    top: 137px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+    width: 75px;
+
+    @media (min-width:320px) and (max-width:479px) {
+        left: 0px;
+        justify-content: center;
+    }
+
+    @media (min-width:480px) and (max-width:599px) {
+        left: 5px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    @media (min-width:600px) and (max-width:800px) {
+        left: 30px;
+        justify-content: center;
+        margin-top: 35px;
+    }
+
+    @media (min-width:801px) and (max-width:1024px) {
+        left: 40px;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    @media (min-width:1025px) and (max-width:1280px) {
+        left: 70px;
+        justify-content: center;
+        margin-top: 35px;
+    }
+
+
+
+    button {
+        width: 70px;
+        height: 70px;
+        background-color: transparent;
+        font-size: 29px;
+        text-shadow: 1px 1px;
+        color: rgb(88, 88, 88);
+        border: 3px solid rgb(79, 76, 76);
+        border-radius: 5px;
+        margin: 6px;
+
+        @media ((min-width:320px) and (max-width:479px)) {
+            width: 50px;
+            height: 40px;
+            font-size: 22px;
+            text-shadow: 0px 1px;
+            margin: 1px;
+            border-width: 2px;
+        }
+
+        @media (min-width:480px) and (max-width:599px) {
+            width: 60px;
+            height: 50px;
+            font-size: 22px;
+            text-shadow: 0px 1px;
+            margin: 1px;
+            border-width: 2px;
+        }
+
+        @media (min-width:600px) and (max-width:800px) {
+            width: 60px;
+            height: 60px;
+            font-size: 26px;
+            text-shadow: 0px 1px;
+            margin: 1px;
+            border-width: 2px;
+        }
+
+        @media (min-width:801px) and (max-width:1024px) {
+            width: 60px;
+            height: 60px;
+            font-size: 26px;
+            margin: 2px;
+            border-width: 2px;
+        }
+
+        @media (min-width:1025px) and (max-width:1280px) {
+            font-size: 27px;
+            margin: 2px;
+            border-width: 2px;
+        }
+    }
+
+    button:hover {
+        background-color: aliceblue;
+        border-color: slateblue;
+        border-width: 1px;
+        color: slateblue;
+        transition: all .1s ease-in-out;
+    }
+}
+
+
+button {
     font-family: 'Instrument Serif', serif;
     letter-spacing: .6px;
     font-size: 15px;
