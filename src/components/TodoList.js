@@ -33,7 +33,10 @@ function TodoList({
 TodoList.propTypes = {
   todoList: PropTypes.array,
   onRemoveTodo: PropTypes.func,
-  onToggleCompleted: PropTypes.func
+  onToggleCompleted: PropTypes.func,
+  sumTodos: PropTypes.number,
+  setSumTodos: PropTypes.func,
+  tableName: PropTypes.string
 }
 
 export default TodoList
