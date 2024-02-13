@@ -26,6 +26,14 @@
         font-size: 18px;
     }
 
+    @media (min-width:600px) and (max-width:800px) {
+        font-size: 20px;
+    }
+
+    @media (min-width:801px) and (max-width:1024px) {
+        font-size: 22px;
+    }
+
     > button {
         background: transparent;
         border-color: rgba(172, 160, 252, 0.315);
@@ -45,6 +53,18 @@
             font-size:11px;
             border-width: 2px;
             padding: 1px 4px 1px 4px;
+        }
+
+        @media (min-width:600px) and (max-width:800px) {
+            font-size:13px;
+            border-width: 2px;
+            padding: 2px 5px 2px 5px;
+        }
+
+        @media (min-width:801px) and (max-width:1024px) {
+            font-size:14px;
+            border-width: 2px;
+            padding: 2px 6px 2px 6px;
         }
     
         &:hover {
@@ -70,5 +90,25 @@
     @media (min-width:320px) and (max-width:479px) {
         height:14px;
         width: 14px;
+    }
+
+    @media (min-width:480px) and (max-width:599px) {
+        height:15px;
+        width: 15px;
+    }
+
+    @media (min-width:600px) and (max-width:800px) {
+        height:16px;
+        width: 16px;
+    }
+
+    @media (min-width:801px) and (max-width:1024px) {
+        height:16px;
+        width: 16px;
+    }
+
+    @media (min-width:1025px) and (max-width:1280px) {
+        height:17px;
+        width: 17px;
     }
 }

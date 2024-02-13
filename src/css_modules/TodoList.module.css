@@ -16,6 +16,21 @@
         width: 55vw;
         margin-left: 20px;
     }
+
+    @media (min-width:600px) and (max-width:800px) {
+        width: 60vw;
+        margin-left: 60px;
+    }
+
+    @media (min-width:801px) and (max-width:1024px) {
+        width: 65vw;
+        margin-left: 60px;
+    }
+
+    @media (min-width:1025px) and (max-width:1280px) {
+        width: 67vw;
+        margin-left: 65px;
+    }
 }
 
 .ListHead {
@@ -41,6 +56,14 @@
 
     @media (min-width:480px) and (max-width:599px) {
         font-size: 32px;
+    }
+
+    @media (min-width:600px) and (max-width:800px) {
+        font-size: 36px;
+    }
+
+    @media (min-width:801px) and (max-width:1024px) {
+        font-size: 37px;
     }
 }
 
