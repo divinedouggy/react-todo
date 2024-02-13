@@ -44,10 +44,8 @@ const LandingPage = () => {
 
 const TableChooser = () => {
   const [tableName, setTableName] = useState(TABLE_NAME)
-  const buttonHandler = (event) => {
+  const buttonHandler = (event) => setTableName(event.target.value)
 
-    setTableName(event.target.value)
-  }
   return (
     <div className={style.MasterContainer}>
       <div className={style.WeekDays}>
