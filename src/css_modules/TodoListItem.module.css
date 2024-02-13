@@ -11,7 +11,6 @@
     border: 1px solid rgba(105, 90, 205, 0.354);
     border-left: 20px solid rgba(0, 0, 0, 0.285);
     border-right: 3px double rgba(0, 0, 0, 0.285);
-    /* border-right: 3px double rgb(88, 88, 88); */
     padding: 2px;
     padding-left: 15px;
     padding-right: 10px;
@@ -32,6 +31,10 @@
 
     @media (min-width:801px) and (max-width:1024px) {
         font-size: 22px;
+    }
+
+    @media (min-width:1025px) and (max-width:1280px) {
+        font-size: 24px;
     }
 
     > button {
